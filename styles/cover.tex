@@ -5,7 +5,9 @@
 
 \makeatletter
 \newcommand{\makecover}{%
-  \begin{titlepage}
+  \ifthenelse{\equal{\TheDocTitle}{}}{}{%
+    \cleardoublepage
+    \thispagestyle{empty}
     \null
     \begin{tikzpicture}[remember picture, overlay]
       % پس‌زمینه رنگی اصلی ملایم
@@ -29,25 +31,30 @@
         ([yshift=3cm, xshift=4cm]current page.west) ..
         ([yshift=10cm]current page.west) -- cycle;
       
-      % باکس محتوای صفحه عنوان با سایه قوی‌تر و پس‌زمینه شیشه‌ای
+      % باکس محتوای صفحه عنوان با سایه
       \node[
         fill=white,
-        drop shadow={shadow xshift=0pt, shadow yshift=-8pt, opacity=0.4},
+        drop shadow={shadow xshift=-5pt, shadow yshift=-8pt, opacity=0.4},
         rounded corners=25pt,
         minimum width=0.85\paperwidth,
         minimum height=0.6\paperheight,
       ] at (current page.center) (contentbox) {};
       
-      % نوار رنگی کوچک در بالای باکس
+      % نوار رنگی در بالای باکس (کمی پهن‌تر)
       \fill[ThemeSecondary, rounded corners=5pt] 
-        ([yshift=-2cm, xshift=-4cm]contentbox.north) rectangle 
-        ([yshift=-2.2cm, xshift=4cm]contentbox.north);
+        ([yshift=-2cm, xshift=-6cm]contentbox.north) rectangle 
+        ([yshift=-2.2cm, xshift=6cm]contentbox.north);
       
       % عنوان و زیرعنوان
-      \node[anchor=north, yshift=-4cm, text width=0.75\paperwidth, align=center] at (contentbox.north) {
-        {\fontsize{36}{45}\selectfont\bfseries\textcolor{ThemePrimary}{\TheDocTitle} \par}
-        \vspace{1.5cm}
-        {\Large\bfseries \textcolor{gray}{\TheDocSubtitle} \par}
+      \node[anchor=north, yshift=-4.5cm, text width=0.75\paperwidth, align=center] at (contentbox.north) {
+        \begin{minipage}{0.75\paperwidth}
+          \begin{persian}
+          \centering
+          {\fontsize{36}{45}\selectfont\bfseries\textcolor{ThemePrimary}{\TheDocTitle} \par}
+          \vspace{1.5cm}
+          {\Large\bfseries \textcolor{gray}{\TheDocSubtitle} \par}
+          \end{persian}
+        \end{minipage}
       };
       
       % خط جداکننده محو
@@ -55,16 +62,25 @@
       
       % مشخصات نویسنده و تاریخ
       \node[anchor=south, yshift=2.5cm] at (contentbox.south) {
-        {\Large \bfseries \textcolor{ThemePrimary}{\TheDocAuthor} \par}
-        \vspace{1cm}
-        {\large \textcolor{gray}{\TheDocDate} \par}
-        \vspace{0.8cm}
-        {\small \textcolor{gray!80}{\TheDocVersion} \par}
+        \begin{minipage}{0.75\paperwidth}
+          \begin{persian}
+          \centering
+          {\Large \bfseries \textcolor{ThemePrimary}{\TheDocAuthor} \par}
+          \vspace{1cm}
+          {\large \textcolor{gray}{\TheDocDate} \par}
+          \vspace{0.8cm}
+          {\small \textcolor{gray!80}{\TheDocVersion} \par}
+          \end{persian}
+        \end{minipage}
       };
       
     \end{tikzpicture}
     \vfill
-  \end{titlepage}
+    \clearpage
+    \thispagestyle{empty}
+    \cleardoublepage
+    \setcounter{page}{1}
+  }
 }
 
 % جایگزین کردن \maketitle

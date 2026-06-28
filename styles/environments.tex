@@ -99,7 +99,7 @@
 \NewTColorBox[use counter=mathbox]{example}{ o }{
     ribbon_box,
     colframe=BoxTealFrame,
-    title={\faPuzzlePiece \quad مثال \themathbox\IfValueT{#1}{. \textnormal{#1}}}
+    title={\faShapes \quad مثال \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
 % 6. سوال
@@ -146,7 +146,7 @@
     \pushQED{\qed}%
     \normalfont \topsep6\p@\@plus6\p@\relax
     \trivlist
-    \item[\hskip\labelsep
+    \item[\hskip0pt
           \bfseries\textcolor{BoxBlueFrame!90!black}{\faPenFancy \quad #1.}]\ignorespaces
 }{%
     \popQED\endtrivlist\@endpefalse

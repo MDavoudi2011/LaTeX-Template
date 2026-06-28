@@ -37,12 +37,14 @@
 \renewcommand{\headrule}{\hbox to\headwidth{\color{ThemePrimary}\leaders\hrule height \headrulewidth\hfill}}
 \renewcommand{\footrulewidth}{0pt}
 
-% استایل صفحات شروع فصل (بدون سربرگ)
+% استایل صفحات شروع فصل و فهرست
 \fancypagestyle{plain}{
     \fancyhf{}
-    % در صورت نیاز به شماره صفحه در شروع فصل، خط زیر را از کامنت خارج کنید
-    % \fancyfoot[C]{\bfseries\textcolor{gray}{\thepage}}
-    \renewcommand{\headrulewidth}{0pt}
+    \fancyhead[RO, LE]{\bfseries\textcolor{ThemePrimary}{\thepage}} % شماره صفحه
+    \fancyhead[LO]{\small\textcolor{ThemePrimary}{\rightmark}} % نام بخش در سمت درون (فرد)
+    \fancyhead[RE]{\small\textcolor{ThemePrimary}{\leftmark}}  % نام فصل در سمت درون (زوج)
+    \renewcommand{\headrulewidth}{1pt}
+    \renewcommand{\headrule}{\hbox to\headwidth{\color{ThemePrimary}\leaders\hrule height \headrulewidth\hfill}}
 }
 
 % ------------------------------------------------------------------------------
