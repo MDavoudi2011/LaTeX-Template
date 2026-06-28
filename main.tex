@@ -78,7 +78,7 @@
 \end{figure}
 
 \section{جداول هوشمند و زیبا}
-در این قالب ۳ نوع جدول کاربردی و بسیار زیبا با دستورات ساده طراحی شده است: \E{minimaltable}، \E{moderntable} و \E{fancytable}.
+در این قالب ۲ نوع جدول کاربردی و بسیار زیبا با دستورات ساده طراحی شده است: \E{minimaltable} و \E{moderntable}.
 برای ارجاع دادن به جدول، کافیست دستور \E{\textbackslash label} را درون آکولادِ عنوانِ جدول قرار دهید. نیازی به تعریف پارامترهای پیچیده نیست و عرض ستون‌ها در صورت استفاده از حروفی مثل \E{c} به صورت خودکار بر اساس طولانی‌ترین کلمه تنظیم می‌شود.
 
 \begin{minimaltable}[H]{جدول ساده و مینیمال \label{tab:min}}{c c c}
@@ -90,23 +90,17 @@
 
 \begin{moderntable}[H]{جدول مدرن با هدر رنگی و راه‌راه \label{tab:mod}}{c c c}
     \THead{نام} & \THead{سن} & \THead{شهر} \\
-    \midrule
     علی & ۲۵ & تهران \\
     رضا & ۳۰ & مشهد \\
 \end{moderntable}
 
-\begin{fancytable}[H]{جدول فانتزی با کادر گرد و خط‌کشی کامل \label{tab:fan}}{c c c}
-    \THead{نام} & \THead{سن} & \THead{شهر} \\
-    \midrule
-    علی & ۲۵ & تهران \\
-    رضا & ۳۰ & مشهد \\
-\end{fancytable}
+
 
 \newpage
 
 \begin{example}
 \label{ex:sample}
-برای مثال، به جدول‌های \cref{tab:min}، \cref{tab:mod} و \cref{tab:fan} توجه کنید.
+برای مثال، به جدول‌های \cref{tab:min} و \cref{tab:mod} توجه کنید.
 همچنین همانطور که در \cref{def:ai}، \cref{thm:fundamental}، \cref{lem:sample} و \cref{ex:sample} مشخص است، سیستم شماره‌گذاری کاملاً یکپارچه و هوشمند است.
 \end{example}
 \begin{question}
