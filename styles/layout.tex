@@ -49,22 +49,22 @@
 % 3. استایل‌دهی به تیترها (Titlesec)
 % ------------------------------------------------------------------------------
 % سفارشی‌سازی زیربخش‌ها (Subsections) با خط رنگی
+\titleformat{\section}
+  {\Huge\bfseries\color{ThemePrimary}}
+  {\thesection}
+  {1em}
+  {#1}
+  [{\vspace{2pt}\color{ThemeSecondary!50}\titlerule[1.5pt]}]
+
 \titleformat{\subsection}
   {\Large\bfseries\color{ThemePrimary}}
   {\thesubsection}
   {1em}
   {#1}
-  [{\vspace{2pt}\color{ThemeSecondary!50}\titlerule[1.5pt]}]
 
 \titleformat{\subsubsection}
   {\large\bfseries\color{ThemeSecondary}}
   {\thesubsubsection}
-  {1em}
-  {#1}
-
-\titleformat{\section}
-  {\Huge\bfseries\color{ThemePrimary}}
-  {\thesection}
   {1em}
   {#1}
 

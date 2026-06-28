@@ -10,6 +10,7 @@
 	ribbon_box/.style={
 		enhanced,
 		breakable,
+		before=\par\pagebreak[0]\needspace{4\baselineskip}\noindent,
 		colback=white,
 		attach boxed title to top right={yshift*=-\tcboxedtitleheight},
 		fonttitle=\bfseries\setRTL,
@@ -37,6 +38,7 @@
 	side_box/.style={
 		enhanced,
 		breakable,
+		before=\par\pagebreak[0]\needspace{3\baselineskip}\noindent,
 		frame hidden,
 		boxrule = 0sp,
 		borderline east = {2pt}{0pt}{#1}, % خط کناری در سمت راست
@@ -50,10 +52,16 @@
 	}
 }
 
-% شمارنده مشترک برای همه محیط‌های ریاضی که وابسته به فصل است
-\newcounter{mathbox}[chapter]
-% تنظیم نمایش شماره به صورت X.Y (مثلاً 1.2)
-\renewcommand{\themathbox}{\thechapter.\arabic{mathbox}}
+% شمارنده مشترک برای همه محیط‌های ریاضی که وابسته به فصل یا بخش است
+\makeatletter
+\@ifundefined{c@chapter}{
+    \newcounter{mathbox}[section]
+    \renewcommand{\themathbox}{\thesection.\arabic{mathbox}}
+}{
+    \newcounter{mathbox}[chapter]
+    \renewcommand{\themathbox}{\thechapter.\arabic{mathbox}}
+}
+\makeatother
 
 % ------------------------------------------------------------------------------
 % محیط‌های شماره‌دار
@@ -96,9 +104,9 @@
 
 % 6. سوال
 \NewDocumentEnvironment{question}{ o }{%
-    \par\vspace{0.75\baselineskip}\noindent
+    \par\pagebreak[0]\needspace{3\baselineskip}\vspace{0.75\baselineskip}\noindent
     \refstepcounter{mathbox}%
-    {\bfseries سوال \themathbox\IfValueT{#1}{. \textnormal{#1}}.} \quad\ignorespaces
+    {\bfseries\color{ThemePrimary}\faQuestionCircle \quad سوال \themathbox\IfValueT{#1}{. \textnormal{#1}}.} \quad\ignorespaces
 }{%
     \par\vspace{0.5\baselineskip}
 }

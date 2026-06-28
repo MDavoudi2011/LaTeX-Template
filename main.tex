@@ -1,12 +1,29 @@
 % ==============================================================================
 % main.tex
 % ==============================================================================
-\documentclass[12pt, a4paper, twoside]{book}
+\documentclass[12pt, a4paper, twoside]{book} % می‌توانید از article نیز استفاده کنید
 
-% 1. لود کردن پکیج‌های پایه و اصلی
+% ==============================================================================
+% تنظیمات کاربری (تغییر دهید)
+% ==============================================================================
+\newcommand{\DocTitle}{جزوه پیشرفته ریاضیات و هوش مصنوعی}
+\newcommand{\DocSubtitle}{نسخه تایپ شده و ساختاریافته}
+\newcommand{\DocAuthor}{علی علوی}
+\newcommand{\DocDate}{\today}
+\newcommand{\MarginType}{narrow} % normal, narrow, wide
+
+\makeatletter
+\@ifundefined{chapter}{
+    \def\frontmatter{}
+    \def\mainmatter{}
+    \def\chapter#1{\section{#1}}
+}{}
+\makeatother
+
+% ۱. لود کردن پکیج‌های پایه و اصلی
 \input{config/packages}
 
-% 2. لود کردن تنظیمات کاربری (رنگ‌ها، حاشیه‌ها و اطلاعات سند)
+% ۲. لود کردن تنظیمات کاربری پیش‌فرض
 \input{config/settings}
 
 % 3. لود کردن استایل‌های سفارشی
