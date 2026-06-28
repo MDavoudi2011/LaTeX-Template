@@ -10,7 +10,8 @@
 	ribbon_box/.style={
 		enhanced,
 		breakable,
-		before=\par\pagebreak[0]\needspace{4\baselineskip}\noindent,
+		before=\par\pagebreak[0]\needspace{4\baselineskip}\vspace{0.25\baselineskip}\noindent,
+		after=\par\vspace{0.25\baselineskip},
 		colback=white,
 		attach boxed title to top right={yshift*=-\tcboxedtitleheight},
 		fonttitle=\bfseries\setRTL,
@@ -38,7 +39,8 @@
 	side_box/.style={
 		enhanced,
 		breakable,
-		before=\par\pagebreak[0]\needspace{3\baselineskip}\noindent,
+		before=\par\pagebreak[0]\needspace{3\baselineskip}\vspace{0.25\baselineskip}\noindent,
+		after=\par\vspace{0.25\baselineskip},
 		frame hidden,
 		boxrule = 0sp,
 		borderline east = {2pt}{0pt}{#1}, % خط کناری در سمت راست
@@ -52,104 +54,6 @@
 	}
 }
 
-% شمارنده مشترک برای همه محیط‌های ریاضی که وابسته به فصل یا بخش است
-\makeatletter
-\@ifundefined{c@chapter}{
-    \newcounter{mathbox}[section]
-    \renewcommand{\themathbox}{\thesection.\arabic{mathbox}}
-}{
-    \newcounter{mathbox}[chapter]
-    \renewcommand{\themathbox}{\thechapter.\arabic{mathbox}}
-}
-\makeatother
-
-% ------------------------------------------------------------------------------
-% محیط‌های شماره‌دار
-% ------------------------------------------------------------------------------
-
-% 1. قضیه
-\NewTColorBox[use counter=mathbox]{theorem}{ o }{
-    ribbon_box,
-    colframe=BoxBlueFrame,
-    title={\faLightbulb \quad قضیه \themathbox\IfValueT{#1}{. \textnormal{#1}}}
-}
-
-% 2. لم
-\NewTColorBox[use counter=mathbox]{lemma}{ o }{
-    ribbon_box,
-    colframe=BoxBlueFrame,
-    title={\faLink \quad لم \themathbox\IfValueT{#1}{. \textnormal{#1}}}
-}
-
-% 3. نتیجه
-\NewTColorBox[use counter=mathbox]{corollary}{ o }{
-    ribbon_box,
-    colframe=BoxBlueFrame,
-    title={\faProjectDiagram \quad نتیجه \themathbox\IfValueT{#1}{. \textnormal{#1}}}
-}
-
-% 4. تعریف
-\NewTColorBox[use counter=mathbox]{definition}{ o }{
-    ribbon_box,
-    colframe=BoxGreenFrame,
-    title={\faBook \quad تعریف \themathbox\IfValueT{#1}{. \textnormal{#1}}}
-}
-
-% 5. مثال
-\NewTColorBox[use counter=mathbox]{example}{ o }{
-    ribbon_box,
-    colframe=BoxTealFrame,
-    title={\faShapes \quad مثال \themathbox\IfValueT{#1}{. \textnormal{#1}}}
-}
-
-% 6. سوال
-\NewDocumentEnvironment{question}{}{%
-    \par\pagebreak[0]\needspace{3\baselineskip}\vspace{0.75\baselineskip}\noindent
-    \refstepcounter{mathbox}%
-    {\bfseries\color{ThemePrimary}\faQuestionCircle \quad سوال \themathbox.} \quad\ignorespaces
-}{%
-    \par\vspace{0.5\baselineskip}
-}
-
-% ------------------------------------------------------------------------------
-% محیط‌های بدون شماره
-% ------------------------------------------------------------------------------
-
-% 7. حل
-\NewTColorBox{solution}{}{
-    side_box=BoxGreenFrame,
-    colback=BoxGreen,
-    title={\faCheckCircle \quad حل}
-}
-
-% 8. نکته مهم
-\NewTColorBox{note}{ o }{
-    side_box=BoxYellowFrame,
-    colback=BoxYellow,
-    title={\faStar \quad نکته مهم\IfValueT{#1}{. \textnormal{#1}}}
-}
-
-% 9. هشدار
-\NewTColorBox{warning}{ o }{
-    side_box=BoxRedFrame,
-    colback=BoxRed,
-    title={\faExclamationTriangle \quad هشدار\IfValueT{#1}{. \textnormal{#1}}}
-}
-
-% ------------------------------------------------------------------------------
-% محیط اثبات (Proof)
-% ------------------------------------------------------------------------------
-\renewcommand{\qedsymbol}{$\blacksquare$}
-\makeatletter
-\renewenvironment{proof}[1][اثبات]{%
-    \par\vspace{0.5\baselineskip}
-    \pushQED{\qed}%
-    \normalfont \topsep6\p@\@plus6\p@\relax
-    \trivlist
-    \item[\hskip0pt
-          \bfseries\textcolor{BoxBlueFrame!90!black}{\faPenFancy \quad #1.}]\ignorespaces
-}{%
-    \popQED\endtrivlist\@endpefalse
-    \vspace{0.5\baselineskip}
-}
-\makeatother
+% لود کردن محیط‌های شماره‌دار و بدون شماره
+\input{styles/environments_numbered}
+\input{styles/environments_unnumbered}

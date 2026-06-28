@@ -1,0 +1,42 @@
+% ==============================================================================
+% styles/environments_unnumbered.tex
+% ==============================================================================
+
+% ------------------------------------------------------------------------------
+% محیط‌های بدون شماره
+% ------------------------------------------------------------------------------
+
+% 7. حل
+\NewTColorBox{solution}{}{
+    side_box=BoxGreenFrame,
+    colback=BoxGreen,
+    before=\par\pagebreak[0]\needspace{3\baselineskip}\vspace{-0.25\baselineskip}\noindent,
+    title={\faCheckCircle \quad حل}
+}
+
+% 8. نکته مهم
+\NewTColorBox{note}{ o }{
+    side_box=BoxYellowFrame,
+    colback=BoxYellow,
+    title={\faStar \quad نکته مهم\IfValueT{#1}{. \textnormal{#1}}}
+}
+
+% 9. هشدار
+\NewTColorBox{warning}{ o }{
+    side_box=BoxRedFrame,
+    colback=BoxRed,
+    title={\faExclamationTriangle \quad هشدار\IfValueT{#1}{. \textnormal{#1}}}
+}
+
+% ------------------------------------------------------------------------------
+% محیط اثبات (Proof)
+% ------------------------------------------------------------------------------
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\renewenvironment{proof}[1][اثبات]{%
+    \par\pagebreak[0]\needspace{3\baselineskip}\vspace{0.25\baselineskip}\noindent
+    \pushQED{\qed}%
+    {\bfseries\textcolor{BoxBlueFrame!90!black}{\faPenFancy \quad #1.}}\quad\ignorespaces
+}{%
+    \hfill\popQED
+    \par\vspace{0.25\baselineskip}
+}

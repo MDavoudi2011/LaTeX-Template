@@ -27,35 +27,80 @@
 
 \tableofcontents
 
+\begingroup
+\let\cleardoublepage\relax
+\let\clearpage\relax
+\vspace{3em}
+\listoffigures
+\vspace{3em}
+\listoftables
+\vspace{3em}
+\tcblistof[\section*]{mathbox}{فهرست محیط‌های اختصاصی}
+\endgroup
+
 % شروع شماره‌گذاری عددی صفحات اصلی
 \mainmatter
 
-\chapter{مقدمه و شروع به کار}
+\chapter{مقدمه و ارجاع‌دهی}
 سلام! به قالب مدرن جزوه‌نویسی خوش آمدید. 
-هدف از طراحی این ساختار، ایجاد بستری ماژولار، تمیز و بسیار حرفه‌ای است تا نوشتن متون علمی به سادگی \E{Markdown} و با خروجی استاندارد \E{LaTeX} انجام شود.
+در این قالب سیستم ارجاع‌دهی هوشمند (\E{cleveref}) پیاده‌سازی شده است. به جای نوشتن دستی کلماتی مثل «بخش»، «شکل» یا «قضیه»، فقط کافیست از دستور \E{\textbackslash cref} استفاده کنید.
+
+به عنوان مثال، به \cref{sec:math}، \cref{thm:fundamental}، \cref{fig:sample} و \cref{tab:sample} توجه کنید! تمام این ارجاعات به صورت خودکار کلمه مناسب را در کنار شماره قرار می‌دهند و با کلیک روی تمام متن آن به بخش مربوطه منتقل می‌شوید.
 
 \section{تست فرمول‌ها و اعداد}
+\label{sec:math}
 در این قالب از پکیج‌های پیشرفته ریاضی استفاده شده است. به عنوان مثال:
 \begin{equation}
+    \label{eq:integral}
     \int_{-\infty}^{+\infty} e^{-x^2} dx = \sqrt{\pi}
 \end{equation}
-همانطور که می‌بینید، تنظیمات به گونه‌ای است که اعدادی مثل ۱، ۲ و ۳ در متن فارسی به درستی و با فونت اختصاص‌یافته نمایش داده می‌شوند.
+همانطور که در \cref{eq:integral} می‌بینید، تنظیمات به گونه‌ای است که اعداد در متن فارسی به درستی نمایش داده می‌شوند.
 
 \section{تست محیط‌های سفارشی}
 
 \begin{definition}[هوش مصنوعی]
+\label{def:ai}
 هوش مصنوعی (AI) به شاخه‌ای از علوم رایانه گفته می‌شود که هدف آن تولید ماشین‌های هوشمند است.
 \end{definition}
 
 \begin{theorem}[قضیه اساسی حساب دیفرانسیل]
+\label{thm:fundamental}
 فرض کنید $f$ تابعی پیوسته در بازه $[a, b]$ باشد. آنگاه...
 \end{theorem}
 \begin{proof}
 این یک محیط اثبات بسیار تمیز است که در انتهای آن یک مربع توخالی قرار می‌گیرد.
 \end{proof}
 
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.4\textwidth]{example-image}
+    \begin{tikzpicture}
+        \fill[ThemePrimary] (0,0) rectangle (4,2);
+        \node[white] at (2,1) {شکل تستی};
+    \end{tikzpicture}
+    \caption{یک شکل تستی برای بررسی فهرست اشکال}
+    \label{fig:sample}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{یک جدول تستی برای بررسی فهرست جداول}
+    \label{tab:sample}
+    \begin{tabular}{ccc}
+        \toprule
+        ستون اول & ستون دوم & ستون سوم \\
+        \midrule
+        ۱ & ۲ & ۳ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
+
 \begin{example}
+\label{ex:sample}
 برای مثال، تابع $f(x) = x^2$ را در نظر بگیرید.
+همچنین همانطور که در \cref{def:ai} و \cref{ex:sample} مشخص است، شماره‌گذاری‌ها کاملاً یکپارچه هستند.
 \end{example}
 \begin{question}
 تابع $f(x) = x^3 + 2x$ داده شده است. مشتق این تابع را به دست آورید و مقدار آن را در $x=1$ محاسبه کنید.

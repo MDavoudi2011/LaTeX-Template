@@ -52,7 +52,7 @@
 % ------------------------------------------------------------------------------
 % سفارشی‌سازی بخش‌ها با خط رنگی
 \titleformat{\section}[block]
-  {\needspace{5\baselineskip}\Huge\bfseries\color{ThemePrimary}}
+  {\needspace{5\baselineskip}\LARGE\bfseries\color{ThemePrimary}}
   {\thesection}
   {1em}
   {#1}
@@ -118,7 +118,7 @@
 % پکیج hyperref برای لینک‌های داخلی (رنگ‌های ملایم و حرفه‌ای)
 \usepackage[
     colorlinks=true,
-    linktocpage=true,
+    linktoc=all,
     linkcolor=ThemePrimary, % رنگ آبی تیره و ملایم برای لینک‌های داخلی
     urlcolor=ThemePrimary,  % لینک‌های وب
     citecolor=ThemeSecondary % رنگ برای ارجاعات مراجع
@@ -138,3 +138,6 @@
 \crefname{section}{بخش}{بخش‌ها}
 \crefname{theorem}{قضیه}{قضایا}
 \crefname{lemma}{لم}{لم‌ها}
+\crefname{corollary}{نتیجه}{نتایج}
+\crefname{definition}{تعریف}{تعاریف}
+\crefname{example}{مثال}{مثال‌ها}

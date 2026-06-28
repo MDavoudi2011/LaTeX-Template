@@ -6,9 +6,7 @@
 \makeatletter
 \newcommand{\makecover}{%
   \ifthenelse{\equal{\TheDocTitle}{}}{}{%
-    \cleardoublepage
-    \thispagestyle{empty}
-    \null
+    \begin{titlepage}
     \begin{tikzpicture}[remember picture, overlay]
       % پس‌زمینه رنگی اصلی ملایم
       \fill[ThemePrimary!5] (current page.south west) rectangle (current page.north east);
@@ -34,7 +32,7 @@
       % باکس محتوای صفحه عنوان با سایه
       \node[
         fill=white,
-        drop shadow={shadow xshift=-5pt, shadow yshift=-8pt, opacity=0.4},
+        drop shadow={shadow xshift=5pt, shadow yshift=-8pt, opacity=0.4},
         rounded corners=25pt,
         minimum width=0.85\paperwidth,
         minimum height=0.6\paperheight,
@@ -42,8 +40,8 @@
       
       % نوار رنگی در بالای باکس (کمی پهن‌تر)
       \fill[ThemeSecondary, rounded corners=5pt] 
-        ([yshift=-2cm, xshift=-6cm]contentbox.north) rectangle 
-        ([yshift=-2.2cm, xshift=6cm]contentbox.north);
+        ([yshift=-2cm, xshift=-8cm]contentbox.north) rectangle 
+        ([yshift=-2.2cm, xshift=8cm]contentbox.north);
       
       % عنوان و زیرعنوان
       \node[anchor=north, yshift=-4.5cm, text width=0.75\paperwidth, align=center] at (contentbox.north) {
@@ -75,11 +73,7 @@
       };
       
     \end{tikzpicture}
-    \vfill
-    \clearpage
-    \thispagestyle{empty}
-    \cleardoublepage
-    \setcounter{page}{1}
+    \end{titlepage}
   }
 }
 
