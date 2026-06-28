@@ -24,7 +24,7 @@
 \fancyhf{} % پاک کردن پیش‌فرض‌ها
 
 % استایل هدر (سربرگ)
-\fancyhead[RO, LE]{\bfseries\textcolor{gray}{\thepage}} % شماره صفحه در سمت بیرون
+\fancyhead[RO, LE]{\bfseries\textcolor{ThemePrimary}{\thepage}} % شماره صفحه
 \fancyhead[LO]{\small\textcolor{ThemePrimary}{\rightmark}} % نام بخش در سمت درون (فرد)
 \fancyhead[RE]{\small\textcolor{ThemePrimary}{\leftmark}}  % نام فصل در سمت درون (زوج)
 
@@ -50,10 +50,11 @@
 % ------------------------------------------------------------------------------
 % سفارشی‌سازی بخش‌ها با خط رنگی
 \titleformat{\section}[block]
-  {\needspace{4\baselineskip}\Huge\bfseries\color{ThemePrimary}}
+  {\needspace{5\baselineskip}\Huge\bfseries\color{ThemePrimary}}
   {\thesection}
   {1em}
-  {#1\\[0.5ex]{\color{ThemeSecondary!50}\titlerule[1.5pt]}}
+  {#1}
+  [{\vspace{2pt}\color{ThemeSecondary!50}\titlerule[1.5pt]}]
 
 \titleformat{\subsection}
   {\needspace{3\baselineskip}\Large\bfseries\color{ThemePrimary}}
@@ -87,11 +88,11 @@
 \setlength{\cftbeforesecskip}{0.3em}
 
 % تنظیم رنگ‌ها و فونت‌های فهرست مطالب هماهنگ با تیترها
-\renewcommand{\cftchapfont}{\bfseries\large\color{ThemePrimary}}
-\renewcommand{\cftchappagefont}{\bfseries\large\color{ThemePrimary}}
+\renewcommand{\cftchapfont}{\bfseries\large\color{black}}
+\renewcommand{\cftchappagefont}{\bfseries\large\color{black}}
 
-\renewcommand{\cftsecfont}{\color{ThemePrimary!90!black}}
-\renewcommand{\cftsecpagefont}{\color{ThemePrimary!90!black}}
+\renewcommand{\cftsecfont}{\color{ThemePrimary}}
+\renewcommand{\cftsecpagefont}{\color{ThemePrimary}}
 
 \renewcommand{\cftsubsecfont}{\color{ThemeSecondary}}
 \renewcommand{\cftsubsecpagefont}{\color{ThemeSecondary}}
@@ -115,9 +116,10 @@
 % پکیج hyperref برای لینک‌های داخلی (رنگ‌های ملایم و حرفه‌ای)
 \usepackage[
     colorlinks=true,
-    linkcolor=blue!70!black, % رنگ آبی تیره و ملایم برای لینک‌های داخلی
-    urlcolor=blue!70!black,  % لینک‌های وب
-    citecolor=green!60!black % رنگ برای ارجاعات مراجع
+    linktocpage=true,
+    linkcolor=ThemePrimary, % رنگ آبی تیره و ملایم برای لینک‌های داخلی
+    urlcolor=ThemePrimary,  % لینک‌های وب
+    citecolor=ThemeSecondary % رنگ برای ارجاعات مراجع
 ]{hyperref}
 
 % ساخت بوک‌مارک‌های تمیز در فایل PDF خروجی

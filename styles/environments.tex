@@ -140,9 +140,16 @@
 % محیط اثبات (Proof)
 % ------------------------------------------------------------------------------
 \renewcommand{\qedsymbol}{$\blacksquare$}
-\renewenvironment{proof}{%
-    \par\pagebreak[0]\needspace{3\baselineskip}\vspace{0.5\baselineskip}\noindent
-    {\bfseries \textcolor{BoxBlueFrame!90!black}{\faPenFancy \quad اثبات.}}\quad\ignorespaces
+\makeatletter
+\renewenvironment{proof}[1][اثبات]{%
+    \par\vspace{0.5\baselineskip}
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item[\hskip\labelsep
+          \bfseries\textcolor{BoxBlueFrame!90!black}{\faPenFancy \quad #1.}]\ignorespaces
 }{%
-    \hfill\qedsymbol\par\vspace{0.5\baselineskip}
+    \popQED\endtrivlist\@endpefalse
+    \vspace{0.5\baselineskip}
 }
+\makeatother
