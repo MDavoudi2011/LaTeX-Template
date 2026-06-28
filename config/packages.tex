@@ -4,6 +4,8 @@
 % این فایل شامل تمامی پکیج‌های استاندارد مورد نیاز است. 
 % ترکیب پکیج‌ها با دقت انتخاب شده تا از تداخل (Conflicts) جلوگیری شود.
 
+\PassOptionsToPackage{table}{xcolor}
+
 % ابعاد صفحه و حاشیه‌ها در styles/layout.tex تنظیم می‌شوند
 \usepackage{geometry}
 \usepackage{emptypage}
@@ -32,7 +34,7 @@
 \usetikzlibrary{shapes, arrows, positioning, calc, fit, backgrounds, shadows}
 
 % مدیریت رنگ‌ها به صورت پیشرفته
-\usepackage{xcolor}
+\usepackage[table]{xcolor}
 
 % جعبه‌های رنگی مدرن (پایه طراحی استایل‌های مشابه Springer برای قضیه‌ها و نکات)
 \usepackage[many]{tcolorbox}
@@ -42,6 +44,7 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{array}
+\usepackage{tabularx}
 
 % سفارشی‌سازی لیست‌ها (گلوله‌ای و شماره‌دار)
 \usepackage{enumitem}

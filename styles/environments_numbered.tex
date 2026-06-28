@@ -33,15 +33,7 @@
     title={\faLink \quad لم \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
-% 3. نتیجه
-\NewTColorBox[use counter=mathbox]{corollary}{ o }{
-    ribbon_box,
-    colframe=BoxBlueFrame,
-    label type=corollary,
-    title={\faProjectDiagram \quad نتیجه \themathbox\IfValueT{#1}{. \textnormal{#1}}}
-}
-
-% 4. تعریف
+% 3. تعریف
 \NewTColorBox[use counter=mathbox]{definition}{ o }{
     ribbon_box,
     colframe=BoxGreenFrame,
@@ -49,7 +41,7 @@
     title={\faBook \quad تعریف \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
-% 5. مثال
+% 4. مثال
 \NewTColorBox[use counter=mathbox]{example}{ o }{
     ribbon_box,
     colframe=BoxTealFrame,
@@ -57,7 +49,7 @@
     title={\faEdit \quad مثال \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
-% 6. سوال
+% 5. سوال
 \NewDocumentEnvironment{question}{}{%
     \par\pagebreak[0]\needspace{3\baselineskip}\vspace{0.25\baselineskip}\noindent
     \refstepcounter{mathbox}%

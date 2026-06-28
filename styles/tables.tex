@@ -1,0 +1,75 @@
+% ==============================================================================
+% styles/tables.tex
+% ==============================================================================
+% این فایل شامل ۳ استایل زیبا و متفاوت برای جداول با پشتیبانی کامل از راست‌چین (RTL) است.
+% از آنجا که پکیج tabularray با چیدمان راست‌به‌چپ در زی‌پرشین تداخل داشت و ستون‌ها برعکس 
+% نمایش داده می‌شدند، ساختار به صورت کاملاً استاندارد بازنویسی شد.
+
+% ---------------------------------------------------------
+% راهنمای استفاده:
+% 1. عرض و چینش ستون‌ها: c (وسط‌چین)، r (راست‌چین)، l (چپ‌چین)، p{3cm} (عرض ثابت)
+% 2. هدر جداول: در جداول مدرن و فانتزی برای اینکه متن هدر سفید و توپر شود، حتماً 
+%    کلمات هدر را داخل دستور \THead{} قرار دهید. (مثال: \THead{نام} & \THead{سن})
+% 3. خط زیر هدر: در تمام جداول حتماً بعد از سطر هدر از دستور \midrule استفاده کنید.
+% 4. خطوط عمودی و افقی (اختیاری): اگر می‌خواهید جدول فانتزی خط‌کشی کامل داشته باشد،
+%    در تعریف ستون‌ها از | استفاده کنید (مثل |c|c|c|) و بین سطرها \hline بگذارید. 
+%    اما پیشنهاد می‌شود برای زیبایی بیشتر در جداول راه‌راه از خطوط اضافی استفاده نکنید.
+% ---------------------------------------------------------
+
+% دستور کمکی برای هدر جداول رنگی (رنگ متن سفید و توپر)
+\newcommand{\THead}[1]{\textcolor{white}{\textbf{#1}}}
+
+% 1. جدول مینیمال (Minimal Table)
+% - ساده، بدون هدر رنگی
+\NewDocumentEnvironment{minimaltable}{ O{H} m m +b }{%
+    \begin{table}[#1]
+        \centering
+        \caption{#2}
+        \begin{tabular}{#3}
+            \toprule
+            #4
+            \bottomrule
+        \end{tabular}
+    \end{table}
+}{}
+
+% 2. جدول مدرن (Modern Table)
+% - هدر رنگی (ThemeSecondary)
+% - راه‌راه با رنگ ملایم
+\NewDocumentEnvironment{moderntable}{ O{H} m m +b }{%
+    \begin{table}[#1]
+        \centering
+        \caption{#2}
+        \rowcolors{2}{ThemeSecondary!10}{white}
+        \begin{tabular}{#3}
+            \rowcolor{ThemeSecondary}
+            #4
+        \end{tabular}
+    \end{table}
+}{}
+
+% 3. جدول فانتزی (Fancy Table)
+% - کادر دور جدول ضخیم، همرنگ هدر و با گوشه‌های گرد
+\NewDocumentEnvironment{fancytable}{ O{H} m m +b }{%
+    \begin{table}[#1]
+        \centering
+        \caption{#2}
+        \rowcolors{2}{ThemePrimary!10}{white}
+        \begin{tcolorbox}[
+            enhanced,
+            arc=2.5mm,
+            boxrule=1.5pt,
+            colframe=ThemePrimary,
+            colback=white,
+            boxsep=0pt,
+            left=-0.25pt, right=-0.25pt, top=-0.25pt, bottom=-0.25pt,
+            clip upper,
+            hbox
+        ]
+        \begin{tabular}{#3}
+            \rowcolor{ThemePrimary}
+            #4
+        \end{tabular}
+        \end{tcolorbox}
+    \end{table}
+}{}

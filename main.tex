@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper, oneside, openany]{book} % می‌توانید از article نیز استفاده کنید
+\documentclass[12pt, a4paper, twoside]{book} % می‌توانید از article نیز استفاده کنید
 
 \input{config/packages}
 \input{config/settings}
@@ -34,7 +34,7 @@
 سلام! به قالب مدرن جزوه‌نویسی خوش آمدید. 
 در این قالب سیستم ارجاع‌دهی هوشمند (\E{cleveref}) پیاده‌سازی شده است. به جای نوشتن دستی کلماتی مثل «بخش»، «شکل» یا «قضیه»، فقط کافیست از دستور \E{\textbackslash cref} استفاده کنید.
 
-به عنوان مثال، به \cref{sec:math}، \cref{thm:fundamental}، \cref{fig:sample} و \cref{tab:sample} توجه کنید! تمام این ارجاعات به صورت خودکار کلمه مناسب را در کنار شماره قرار می‌دهند و با کلیک روی تمام متن آن به بخش مربوطه منتقل می‌شوید.
+به عنوان مثال، به \cref{sec:math}، \cref{thm:fundamental}، \cref{fig:sample} و \cref{tab:min} توجه کنید! تمام این ارجاعات به صورت خودکار کلمه مناسب را در کنار شماره قرار می‌دهند و با کلیک روی تمام متن آن به بخش مربوطه منتقل می‌شوید.
 همچنین برای لینک دادن به وب‌سایت‌ها می‌توانید از دستور \E{\textbackslash href} استفاده کنید، مثل: \href{https://google.com}{سایت گوگل}.
 
 \section{تست فرمول‌ها و اعداد}
@@ -61,6 +61,11 @@
 این یک محیط اثبات بسیار تمیز است که در انتهای آن یک مربع توخالی قرار می‌گیرد.
 \end{proof}
 
+\begin{lemma}[لم مشتق‌گیری]
+\label{lem:sample}
+اگر تابعی در نقطه‌ای مشتق‌پذیر باشد، در آن نقطه پیوسته نیز هست.
+\end{lemma}
+
 \begin{figure}[H]
     \centering
     % \includegraphics[width=0.4\textwidth]{example-image}
@@ -68,29 +73,41 @@
         \fill[ThemePrimary] (0,0) rectangle (4,2);
         \node[white] at (2,1) {شکل تستی};
     \end{tikzpicture}
-    \caption{یک شکل تستی برای بررسی فهرست اشکال}
+    \caption{یک شکل تستی برای نشان دادن ارجاع}
     \label{fig:sample}
 \end{figure}
 
-\begin{table}[H]
-    \centering
-    \caption{یک جدول تستی برای بررسی فهرست جداول}
-    \label{tab:sample}
-    \begin{tabular}{ccc}
-        \toprule
-        ستون اول & ستون دوم & ستون سوم \\
-        \midrule
-        ۱ & ۲ & ۳ \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+\section{جداول هوشمند و زیبا}
+در این قالب ۳ نوع جدول کاربردی و بسیار زیبا با دستورات ساده طراحی شده است: \E{minimaltable}، \E{moderntable} و \E{fancytable}.
+برای ارجاع دادن به جدول، کافیست دستور \E{\textbackslash label} را درون آکولادِ عنوانِ جدول قرار دهید. نیازی به تعریف پارامترهای پیچیده نیست و عرض ستون‌ها در صورت استفاده از حروفی مثل \E{c} به صورت خودکار بر اساس طولانی‌ترین کلمه تنظیم می‌شود.
+
+\begin{minimaltable}[H]{جدول ساده و مینیمال \label{tab:min}}{c c c}
+    \textbf{نام} & \textbf{سن} & \textbf{شهر} \\
+    \midrule
+    علی & ۲۵ & تهران \\
+    رضا & ۳۰ & مشهد \\
+\end{minimaltable}
+
+\begin{moderntable}[H]{جدول مدرن با هدر رنگی و راه‌راه \label{tab:mod}}{c c c}
+    \THead{نام} & \THead{سن} & \THead{شهر} \\
+    \midrule
+    علی & ۲۵ & تهران \\
+    رضا & ۳۰ & مشهد \\
+\end{moderntable}
+
+\begin{fancytable}[H]{جدول فانتزی با کادر گرد و خط‌کشی کامل \label{tab:fan}}{c c c}
+    \THead{نام} & \THead{سن} & \THead{شهر} \\
+    \midrule
+    علی & ۲۵ & تهران \\
+    رضا & ۳۰ & مشهد \\
+\end{fancytable}
 
 \newpage
 
 \begin{example}
 \label{ex:sample}
-برای مثال، تابع $f(x) = x^2$ را در نظر بگیرید.
-همچنین همانطور که در \cref{def:ai} و \cref{ex:sample} مشخص است، شماره‌گذاری‌ها کاملاً یکپارچه هستند.
+برای مثال، به جدول‌های \cref{tab:min}، \cref{tab:mod} و \cref{tab:fan} توجه کنید.
+همچنین همانطور که در \cref{def:ai}، \cref{thm:fundamental}، \cref{lem:sample} و \cref{ex:sample} مشخص است، سیستم شماره‌گذاری کاملاً یکپارچه و هوشمند است.
 \end{example}
 \begin{question}
 تابع $f(x) = x^3 + 2x$ داده شده است. مشتق این تابع را به دست آورید و مقدار آن را در $x=1$ محاسبه کنید.
@@ -103,9 +120,9 @@
 شما می‌توانید به راحتی و بدون درگیر شدن با استایل‌های پیچیده، این باکس‌ها را ایجاد کنید.
 \end{note}
 
-\begin{corollary}
+\begin{warning}
 فراموش نکنید که پکیج \E{xepersian} باید همواره آخرین پکیجی باشد که در سند بارگذاری می‌شود!
-\end{corollary}
+\end{warning}
 
 \section{ساختار پروژه}
 این پروژه کاملاً ماژولار است. دایرکتوری‌های زیر برای مدیریت تمیز فایل‌ها ایجاد شده‌اند:
