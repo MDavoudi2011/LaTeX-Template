@@ -5,26 +5,46 @@
 % ------------------------------------------------------------------------------
 % 1. اطلاعات سند (برای صفحه عنوان)
 % ------------------------------------------------------------------------------
-\providecommand{\DocTitle}{جزوه آموزشی مدرن}
-\providecommand{\DocSubtitle}{قالب مینیمال، تمیز و توسعه‌پذیر}
-\providecommand{\DocAuthor}{نام نویسنده}
-\providecommand{\DocDate}{\today}
-\providecommand{\DocVersion}{نسخه ۱.۰}
+\def\TheDocTitle{جزوه آموزشی مدرن}
+\newcommand{\DocTitle}[1]{\def\TheDocTitle{#1}}
 
-% اضافه کردن این مقادیر به دستورات استاندارد لاتک برای جلوگیری از خطا و تنظیم متادیتای PDF
-\title{\DocTitle}
-\author{\DocAuthor}
-\date{\DocDate}
+\def\TheDocSubtitle{قالب مینیمال، تمیز و توسعه‌پذیر}
+\newcommand{\DocSubtitle}[1]{\def\TheDocSubtitle{#1}}
+
+\def\TheDocAuthor{نام نویسنده}
+\newcommand{\DocAuthor}[1]{\def\TheDocAuthor{#1}}
+
+\def\TheDocDate{\today}
+\newcommand{\DocDate}[1]{\def\TheDocDate{#1}}
+
+\def\TheDocVersion{نسخه ۱.۰}
+\newcommand{\DocVersion}[1]{\def\TheDocVersion{#1}}
 
 % ------------------------------------------------------------------------------
 % 2. تنظیمات حاشیه صفحه (Margin)
 % ------------------------------------------------------------------------------
-\providecommand{\MarginType}{narrow}
+\def\TheMarginType{narrow}
+\newcommand{\MarginType}[1]{\def\TheMarginType{#1}}
+
+% اضافه کردن متادیتای PDF در AtBeginDocument برای اطمینان از لود مقادیر جدید
+\AtBeginDocument{
+  \title{\TheDocTitle}
+  \author{\TheDocAuthor}
+  \date{\TheDocDate}
+}
 
 % ------------------------------------------------------------------------------
 % 3. تنظیمات رنگ‌بندی تم (Theme Colors)
 % ------------------------------------------------------------------------------
 \makeatletter
+
+% پشتیبانی از کلاس article برای دستورات book
+\@ifundefined{chapter}{
+    \def\frontmatter{}
+    \def\mainmatter{}
+    \def\chapter#1{\section{#1}}
+}{}
+
 \@ifundefinedcolor{ThemePrimary}{\definecolor{ThemePrimary}{HTML}{1A365D}}{}
 \@ifundefinedcolor{ThemeSecondary}{\definecolor{ThemeSecondary}{HTML}{2B6CB0}}{}
 \makeatother

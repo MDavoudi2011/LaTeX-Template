@@ -6,13 +6,13 @@
 % 1. هندسه صفحه (Geometry)
 % ------------------------------------------------------------------------------
 % اعمال تنظیمات حاشیه‌ها بر اساس انتخاب کاربر در فایل settings.tex
-\ifthenelse{\equal{\MarginType}{normal}}{
+\ifthenelse{\equal{\TheMarginType}{normal}}{
     \geometry{a4paper, top=3.5cm, bottom=3.5cm, inner=2.5cm, outer=3.5cm, headheight=40pt, headsep=1.2cm, footskip=1.5cm}
 }{}
-\ifthenelse{\equal{\MarginType}{narrow}}{
+\ifthenelse{\equal{\TheMarginType}{narrow}}{
     \geometry{a4paper, top=3.5cm, bottom=2.5cm, inner=1.5cm, outer=1.5cm, headheight=40pt, headsep=1.2cm, footskip=1cm}
 }{}
-\ifthenelse{\equal{\MarginType}{wide}}{
+\ifthenelse{\equal{\TheMarginType}{wide}}{
     \geometry{a4paper, top=4cm, bottom=4cm, inner=3cm, outer=5cm, headheight=40pt, headsep=1.5cm, footskip=1.5cm}
 }{}
 

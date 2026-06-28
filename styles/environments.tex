@@ -99,14 +99,14 @@
 \NewTColorBox[use counter=mathbox]{example}{ o }{
     ribbon_box,
     colframe=BoxTealFrame,
-    title={\faCogs \quad مثال \themathbox\IfValueT{#1}{. \textnormal{#1}}}
+    title={\faEdit \quad مثال \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
 % 6. سوال
-\NewDocumentEnvironment{question}{ o }{%
+\NewDocumentEnvironment{question}{}{%
     \par\pagebreak[0]\needspace{3\baselineskip}\vspace{0.75\baselineskip}\noindent
     \refstepcounter{mathbox}%
-    {\bfseries\color{ThemePrimary}\faQuestionCircle \quad سوال \themathbox\IfValueT{#1}{. \textnormal{#1}}.} \quad\ignorespaces
+    {\bfseries\color{ThemePrimary}\faQuestionCircle \quad سوال \themathbox.} \quad\ignorespaces
 }{%
     \par\vspace{0.5\baselineskip}
 }
