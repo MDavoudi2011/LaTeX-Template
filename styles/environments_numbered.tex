@@ -18,7 +18,7 @@
 % ------------------------------------------------------------------------------
 
 % 1. قضیه
-\NewTColorBox[use counter=mathbox, list inside=mathbox]{theorem}{ o }{
+\NewTColorBox[use counter=mathbox]{theorem}{ o }{
     ribbon_box,
     colframe=BoxBlueFrame,
     label type=theorem,
@@ -26,7 +26,7 @@
 }
 
 % 2. لم
-\NewTColorBox[use counter=mathbox, list inside=mathbox]{lemma}{ o }{
+\NewTColorBox[use counter=mathbox]{lemma}{ o }{
     ribbon_box,
     colframe=BoxBlueFrame,
     label type=lemma,
@@ -34,7 +34,7 @@
 }
 
 % 3. نتیجه
-\NewTColorBox[use counter=mathbox, list inside=mathbox]{corollary}{ o }{
+\NewTColorBox[use counter=mathbox]{corollary}{ o }{
     ribbon_box,
     colframe=BoxBlueFrame,
     label type=corollary,
@@ -42,7 +42,7 @@
 }
 
 % 4. تعریف
-\NewTColorBox[use counter=mathbox, list inside=mathbox]{definition}{ o }{
+\NewTColorBox[use counter=mathbox]{definition}{ o }{
     ribbon_box,
     colframe=BoxGreenFrame,
     label type=definition,
@@ -50,7 +50,7 @@
 }
 
 % 5. مثال
-\NewTColorBox[use counter=mathbox, list inside=mathbox]{example}{ o }{
+\NewTColorBox[use counter=mathbox]{example}{ o }{
     ribbon_box,
     colframe=BoxTealFrame,
     label type=example,
@@ -61,7 +61,6 @@
 \NewDocumentEnvironment{question}{}{%
     \par\pagebreak[0]\needspace{3\baselineskip}\vspace{0.25\baselineskip}\noindent
     \refstepcounter{mathbox}%
-    \addcontentsline{mathbox}{section}{سوال \themathbox}%
     {\bfseries\color{ThemePrimary}\faQuestionCircle \quad سوال \themathbox.} \quad\ignorespaces
 }{%
     \par\vspace{0.25\baselineskip}

@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper, twoside]{book} % می‌توانید از article نیز استفاده کنید
+\documentclass[12pt, a4paper, oneside, openany]{book} % می‌توانید از article نیز استفاده کنید
 
 \input{config/packages}
 \input{config/settings}
@@ -27,17 +27,6 @@
 
 \tableofcontents
 
-\begingroup
-\let\cleardoublepage\relax
-\let\clearpage\relax
-\vspace{3em}
-\listoffigures
-\vspace{3em}
-\listoftables
-\vspace{3em}
-\tcblistof[\section*]{mathbox}{فهرست محیط‌های اختصاصی}
-\endgroup
-
 % شروع شماره‌گذاری عددی صفحات اصلی
 \mainmatter
 
@@ -46,6 +35,7 @@
 در این قالب سیستم ارجاع‌دهی هوشمند (\E{cleveref}) پیاده‌سازی شده است. به جای نوشتن دستی کلماتی مثل «بخش»، «شکل» یا «قضیه»، فقط کافیست از دستور \E{\textbackslash cref} استفاده کنید.
 
 به عنوان مثال، به \cref{sec:math}، \cref{thm:fundamental}، \cref{fig:sample} و \cref{tab:sample} توجه کنید! تمام این ارجاعات به صورت خودکار کلمه مناسب را در کنار شماره قرار می‌دهند و با کلیک روی تمام متن آن به بخش مربوطه منتقل می‌شوید.
+همچنین برای لینک دادن به وب‌سایت‌ها می‌توانید از دستور \E{\textbackslash href} استفاده کنید، مثل: \href{https://google.com}{سایت گوگل}.
 
 \section{تست فرمول‌ها و اعداد}
 \label{sec:math}
@@ -113,9 +103,9 @@
 شما می‌توانید به راحتی و بدون درگیر شدن با استایل‌های پیچیده، این باکس‌ها را ایجاد کنید.
 \end{note}
 
-\begin{warning}
+\begin{corollary}
 فراموش نکنید که پکیج \E{xepersian} باید همواره آخرین پکیجی باشد که در سند بارگذاری می‌شود!
-\end{warning}
+\end{corollary}
 
 \section{ساختار پروژه}
 این پروژه کاملاً ماژولار است. دایرکتوری‌های زیر برای مدیریت تمیز فایل‌ها ایجاد شده‌اند:

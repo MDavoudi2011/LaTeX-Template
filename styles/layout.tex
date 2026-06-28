@@ -90,14 +90,14 @@
 \setlength{\cftbeforesecskip}{0.3em}
 
 % تنظیم رنگ‌ها و فونت‌های فهرست مطالب هماهنگ با تیترها
-\renewcommand{\cftchapfont}{\bfseries\large\color{black}}
-\renewcommand{\cftchappagefont}{\bfseries\large\color{black}}
+\renewcommand{\cftchapfont}{\bfseries\large\hypersetup{linkcolor=black}\color{black}}
+\renewcommand{\cftchappagefont}{\bfseries\large\hypersetup{linkcolor=black}\color{black}}
 
-\renewcommand{\cftsecfont}{\color{ThemePrimary}}
-\renewcommand{\cftsecpagefont}{\color{ThemePrimary}}
+\renewcommand{\cftsecfont}{\hypersetup{linkcolor=ThemePrimary}\color{ThemePrimary}}
+\renewcommand{\cftsecpagefont}{\hypersetup{linkcolor=ThemePrimary}\color{ThemePrimary}}
 
-\renewcommand{\cftsubsecfont}{\color{ThemeSecondary}}
-\renewcommand{\cftsubsecpagefont}{\color{ThemeSecondary}}
+\renewcommand{\cftsubsecfont}{\hypersetup{linkcolor=ThemeSecondary}\color{ThemeSecondary}}
+\renewcommand{\cftsubsecpagefont}{\hypersetup{linkcolor=ThemeSecondary}\color{ThemeSecondary}}
 
 % تو رفتگی شماره صفحات در فهرست از سمت چپ (RTL)
 \renewcommand{\cftchapafterpnum}{\hspace*{1.5em}}
