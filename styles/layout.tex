@@ -1,0 +1,126 @@
+% ==============================================================================
+% styles/layout.tex
+% ==============================================================================
+
+% ------------------------------------------------------------------------------
+% 1. هندسه صفحه (Geometry)
+% ------------------------------------------------------------------------------
+% اعمال تنظیمات حاشیه‌ها بر اساس انتخاب کاربر در فایل settings.tex
+\ifthenelse{\equal{\MarginType}{normal}}{
+    \geometry{a4paper, top=3.5cm, bottom=3.5cm, inner=2.5cm, outer=3.5cm, headheight=40pt, headsep=1.2cm, footskip=1.5cm}
+}{}
+\ifthenelse{\equal{\MarginType}{narrow}}{
+    \geometry{a4paper, top=3.5cm, bottom=2.5cm, inner=1.5cm, outer=1.5cm, headheight=40pt, headsep=1.2cm, footskip=1cm}
+}{}
+\ifthenelse{\equal{\MarginType}{wide}}{
+    \geometry{a4paper, top=4cm, bottom=4cm, inner=3cm, outer=5cm, headheight=40pt, headsep=1.5cm, footskip=1.5cm}
+}{}
+
+% ------------------------------------------------------------------------------
+% 2. سربرگ و پابرگ (Fancyhdr)
+% ------------------------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % پاک کردن پیش‌فرض‌ها
+
+% استایل هدر (سربرگ)
+\fancyhead[RO, LE]{\bfseries\textcolor{gray}{\thepage}} % شماره صفحه در سمت بیرون
+\fancyhead[LO]{\small\textcolor{ThemePrimary}{\rightmark}} % نام بخش در سمت درون (فرد)
+\fancyhead[RE]{\small\textcolor{ThemePrimary}{\leftmark}}  % نام فصل در سمت درون (زوج)
+
+% استایل فوتر (پابرگ)
+% پابرگ خالی است تا فضای کافی برای زیرنویس‌ها (Footnotes) فراهم شود.
+\fancyfoot{}
+
+% خط کشی ملایم برای سربرگ
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{ThemePrimary}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+% استایل صفحات شروع فصل (بدون سربرگ)
+\fancypagestyle{plain}{
+    \fancyhf{}
+    % در صورت نیاز به شماره صفحه در شروع فصل، خط زیر را از کامنت خارج کنید
+    % \fancyfoot[C]{\bfseries\textcolor{gray}{\thepage}}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% ------------------------------------------------------------------------------
+% 3. استایل‌دهی به تیترها (Titlesec)
+% ------------------------------------------------------------------------------
+% سفارشی‌سازی زیربخش‌ها (Subsections) با خط رنگی
+\titleformat{\subsection}
+  {\Large\bfseries\color{ThemePrimary}}
+  {\thesubsection}
+  {1em}
+  {#1}
+  [{\vspace{2pt}\color{ThemeSecondary!50}\titlerule[1.5pt]}]
+
+\titleformat{\subsubsection}
+  {\large\bfseries\color{ThemeSecondary}}
+  {\thesubsubsection}
+  {1em}
+  {#1}
+
+\titleformat{\section}
+  {\Huge\bfseries\color{ThemePrimary}}
+  {\thesection}
+  {1em}
+  {#1}
+
+% ------------------------------------------------------------------------------
+% 4. تنظیمات فهرست مطالب (TOC)
+% ------------------------------------------------------------------------------
+% استفاده از tocloft برای زیبایی بیشتر فهرست‌ها
+\usepackage{tocloft}
+
+% وسط‌چین کردن و تغییر استایل عنوان فهرست
+\renewcommand{\cfttoctitlefont}{\hfill\Huge\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+% استایل خطوط راهنما (نقطه‌چین) ملایم‌تر
+\renewcommand{\cftdot}{\ensuremath{\cdot}}
+\renewcommand{\cftsecdotsep}{4.5}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+
+% فاصله‌ها در فهرست
+\setlength{\cftbeforechapskip}{1.5em}
+\setlength{\cftbeforesecskip}{0.3em}
+
+% فونت فصل‌ها در فهرست
+\renewcommand{\cftchapfont}{\bfseries\large}
+\renewcommand{\cftchappagefont}{\bfseries\large}
+
+% ------------------------------------------------------------------------------
+% 4. تنظیمات فاصله خطوط و پاراگراف‌ها
+% ------------------------------------------------------------------------------
+% این تنظیمات به خوانایی متن فارسی بسیار کمک می‌کنند
+\linespread{1.35} % فاصله خطوط بهینه برای متون فارسی
+\setlength{\parskip}{0.6\baselineskip plus 2pt minus 1pt} % فاصله بین پاراگراف‌ها
+\setlength{\parindent}{1.5em} % تورفتگی خط اول پاراگراف
+
+% ------------------------------------------------------------------------------
+% 5. ارجاع‌دهی پیشرفته (Hyperref & Cleveref)
+% ------------------------------------------------------------------------------
+% پکیج hyperref برای لینک‌های داخلی (رنگ‌های ملایم و حرفه‌ای)
+\usepackage[
+    colorlinks=true,
+    linkcolor=blue!70!black, % رنگ آبی تیره و ملایم برای لینک‌های داخلی
+    urlcolor=blue!70!black,  % لینک‌های وب
+    citecolor=green!60!black % رنگ برای ارجاعات مراجع
+]{hyperref}
+
+% ساخت بوک‌مارک‌های تمیز در فایل PDF خروجی
+\usepackage{bookmark}
+
+% پکیج cleveref برای ارجاع‌دهی هوشمند (باید حتماً بعد از hyperref لود شود)
+\usepackage{cleveref}
+
+% سفارشی‌سازی نام‌های فارسی برای ارجاع هوشمند
+\crefname{equation}{معادله}{معادلات}
+\crefname{figure}{شکل}{اشکال}
+\crefname{table}{جدول}{جداول}
+\crefname{chapter}{فصل}{فصول}
+\crefname{section}{بخش}{بخش‌ها}
+\crefname{theorem}{قضیه}{قضایا}
+\crefname{lemma}{لم}{لم‌ها}

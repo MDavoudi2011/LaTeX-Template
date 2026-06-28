@@ -1,0 +1,52 @@
+% ==============================================================================
+% config/packages.tex
+% ==============================================================================
+% این فایل شامل تمامی پکیج‌های استاندارد مورد نیاز است. 
+% ترکیب پکیج‌ها با دقت انتخاب شده تا از تداخل (Conflicts) جلوگیری شود.
+
+% ابعاد صفحه و حاشیه‌ها در styles/layout.tex تنظیم می‌شوند
+\usepackage{geometry}
+\usepackage{ifthen}
+\usepackage{etoolbox}
+\usepackage{xparse}
+
+% ریاضیات، نمادها و قضیه‌ها (مبتنی بر استایل AMS)
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+
+% گرافیک و درج تصاویر
+\usepackage{graphicx}
+\usepackage{float}       % کنترل دقیق‌تر جایگاه تصاویر (H)
+\usepackage{caption}     % سفارشی‌سازی کپشن‌ها
+\usepackage{subcaption}  % پشتیبانی از تصاویر چندگانه (Subfigures)
+
+% آیکون‌ها و استایل‌دهی تیترها
+\usepackage{fontawesome5}
+\usepackage[explicit]{titlesec}
+
+% رسم اشکال برداری (TikZ) - برای نمودارهای ریاضی و گراف‌ها
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning, calc, fit, backgrounds, shadows}
+
+% مدیریت رنگ‌ها به صورت پیشرفته
+\usepackage{xcolor}
+
+% جعبه‌های رنگی مدرن (پایه طراحی استایل‌های مشابه Springer برای قضیه‌ها و نکات)
+\usepackage[many]{tcolorbox}
+\tcbuselibrary{skins, breakable, theorems}
+
+% ابزارهای پیشرفته برای رسم جداول زیبا و استاندارد
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+
+% سفارشی‌سازی لیست‌ها (گلوله‌ای و شماره‌دار)
+\usepackage{enumitem}
+
+% وارد کردن و نمایش کدهای برنامه‌نویسی
+\usepackage{listings}
+
+% سربرگ و پابرگ در styles/layout.tex تنظیم می‌شوند
+
+% ارجاعات و لینک‌های داخلی در styles/layout.tex تنظیم می‌شوند
