@@ -50,27 +50,6 @@
 	}
 }
 
-% استایل ۳: باکس با هدر روی ضلع بالا (Top Box) برای هشدار و ...
-\tcbset{
-    top_box/.style={
-        breakable,
-        enhanced,
-        colback=white,
-        arc=0pt,
-        outer arc=0pt,
-        fonttitle=\bfseries\large\setRTL,
-        before upper=\setRTL,
-        attach boxed title to top right={},
-        boxed title style={
-            enhanced,
-            skin=enhancedfirst jigsaw,
-            arc=3pt,
-            bottom=0pt,
-            interior style={fill=tcbcolframe}
-        },
-    }
-}
-
 % شمارنده مشترک برای همه محیط‌های ریاضی که وابسته به فصل است
 \newcounter{mathbox}[chapter]
 % تنظیم نمایش شماره به صورت X.Y (مثلاً 1.2)
@@ -84,42 +63,44 @@
 \NewTColorBox[use counter=mathbox]{theorem}{ o }{
     ribbon_box,
     colframe=BoxBlueFrame,
-    title={\faLightbulb \quad قضیه \themathbox\IfValueT{#1}{ \textnormal{(#1)}}}
+    title={\faLightbulb \quad قضیه \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
 % 2. لم
 \NewTColorBox[use counter=mathbox]{lemma}{ o }{
     ribbon_box,
     colframe=BoxBlueFrame,
-    title={\faLink \quad لم \themathbox\IfValueT{#1}{ \textnormal{(#1)}}}
+    title={\faLink \quad لم \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
 % 3. نتیجه
 \NewTColorBox[use counter=mathbox]{corollary}{ o }{
     ribbon_box,
     colframe=BoxBlueFrame,
-    title={\faProjectDiagram \quad نتیجه \themathbox\IfValueT{#1}{ \textnormal{(#1)}}}
+    title={\faProjectDiagram \quad نتیجه \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
 % 4. تعریف
 \NewTColorBox[use counter=mathbox]{definition}{ o }{
     ribbon_box,
     colframe=BoxGreenFrame,
-    title={\faBook \quad تعریف \themathbox\IfValueT{#1}{ \textnormal{(#1)}}}
+    title={\faBook \quad تعریف \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
-% 5. سوال
-\NewTColorBox[use counter=mathbox]{question}{ o }{
-    ribbon_box,
-    colframe=BoxGrayFrame!80!black,
-    title={\faQuestionCircle \quad سوال \themathbox\IfValueT{#1}{ \textnormal{(#1)}}}
-}
-
-% 6. مثال
+% 5. مثال
 \NewTColorBox[use counter=mathbox]{example}{ o }{
-    side_box=BoxGrayFrame,
-    colback=BoxGray,
-    title={\faCogs \quad مثال \themathbox\IfValueT{#1}{ \textnormal{(#1)}}}
+    ribbon_box,
+    colframe=BoxTealFrame,
+    title={\faCogs \quad مثال \themathbox\IfValueT{#1}{. \textnormal{#1}}}
+}
+
+% 6. سوال
+\NewDocumentEnvironment{question}{ o }{%
+    \par\vspace{0.75\baselineskip}\noindent
+    \refstepcounter{mathbox}%
+    {\bfseries سوال \themathbox\IfValueT{#1}{. \textnormal{#1}}.} \quad\ignorespaces
+}{%
+    \par\vspace{0.5\baselineskip}
 }
 
 % ------------------------------------------------------------------------------
@@ -137,15 +118,14 @@
 \NewTColorBox{note}{ o }{
     side_box=BoxYellowFrame,
     colback=BoxYellow,
-    title={\faStar \quad نکته مهم\IfValueT{#1}{ \textnormal{(#1)}}}
+    title={\faStar \quad نکته مهم\IfValueT{#1}{. \textnormal{#1}}}
 }
 
-% 9. هشدار (استفاده از استایل Top Box)
+% 9. هشدار
 \NewTColorBox{warning}{ o }{
-    top_box,
-    colframe=BoxRedFrame,
-    colbacktitle=BoxRedFrame,
-    title={\faExclamationTriangle \quad هشدار\IfValueT{#1}{ \textnormal{(#1)}}}
+    side_box=BoxRedFrame,
+    colback=BoxRed,
+    title={\faExclamationTriangle \quad هشدار\IfValueT{#1}{. \textnormal{#1}}}
 }
 
 % ------------------------------------------------------------------------------
