@@ -99,7 +99,7 @@
 \NewTColorBox[use counter=mathbox]{example}{ o }{
     ribbon_box,
     colframe=BoxTealFrame,
-    title={\faEdit \quad مثال \themathbox\IfValueT{#1}{. \textnormal{#1}}}
+    title={\faPuzzlePiece \quad مثال \themathbox\IfValueT{#1}{. \textnormal{#1}}}
 }
 
 % 6. سوال
@@ -140,4 +140,9 @@
 % محیط اثبات (Proof)
 % ------------------------------------------------------------------------------
 \renewcommand{\qedsymbol}{$\blacksquare$}
-\renewenvironment{proof}{{\bfseries \textcolor{BoxBlueFrame!90!black}{\faPenFancy \quad اثبات.}\quad}}{\hfill\qedsymbol\newline}
+\renewenvironment{proof}{%
+    \par\pagebreak[0]\needspace{3\baselineskip}\vspace{0.5\baselineskip}\noindent
+    {\bfseries \textcolor{BoxBlueFrame!90!black}{\faPenFancy \quad اثبات.}}\quad\ignorespaces
+}{%
+    \hfill\qedsymbol\par\vspace{0.5\baselineskip}
+}

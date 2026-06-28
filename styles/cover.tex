@@ -5,7 +5,76 @@
 
 \makeatletter
 \renewcommand{\maketitle}{%
-  \begin{titlepage}
+  \begin{titlepage}% ==============================================================================
+% styles/cover.tex
+% ==============================================================================
+% طراحی صفحه عنوان مدرن با استفاده از TikZ
+
+\makeatletter
+\AtBeginDocument{
+  \renewcommand{\maketitle}{%
+    \begin{titlepage}
+      \begin{tikzpicture}[remember picture, overlay]
+        % پس‌زمینه رنگی اصلی ملایم
+        \fill[ThemePrimary!5] (current page.south west) rectangle (current page.north east);
+        
+        % تزئینات هندسی با رنگ اصلی و ثانویه در بالا
+        \fill[ThemePrimary] 
+          (current page.north west) -- 
+          (current page.north east) -- 
+          ([yshift=-8cm]current page.north east) .. controls 
+          ([yshift=-12cm, xshift=-5cm]current page.north east) and 
+          ([yshift=-5cm, xshift=5cm]current page.west) .. 
+          ([yshift=-15cm]current page.west) -- cycle;
+          
+        % نوار تزئینی رنگ ثانویه در پایین
+        \fill[ThemeSecondary]
+          (current page.south west) --
+          (current page.south east) --
+          ([yshift=5cm]current page.south east) .. controls
+          ([yshift=8cm, xshift=-3cm]current page.south east) and
+          ([yshift=3cm, xshift=4cm]current page.west) ..
+          ([yshift=10cm]current page.west) -- cycle;
+        
+        % باکس محتوای صفحه عنوان با سایه قوی‌تر و پس‌زمینه شیشه‌ای
+        \node[
+          fill=white,
+          drop shadow={shadow xshift=0pt, shadow yshift=-8pt, opacity=0.4, shadow blur steps=10, shadow blur radius=1.5ex},
+          rounded corners=25pt,
+          minimum width=0.85\paperwidth,
+          minimum height=0.6\paperheight,
+        ] at (current page.center) (contentbox) {};
+        
+        % نوار رنگی کوچک در بالای باکس
+        \fill[ThemeSecondary, rounded corners=5pt] 
+          ([yshift=-2cm, xshift=-4cm]contentbox.north) rectangle 
+          ([yshift=-2.2cm, xshift=4cm]contentbox.north);
+        
+        % عنوان و زیرعنوان
+        \node[anchor=north, yshift=-4cm, text width=0.75\paperwidth, align=center] at (contentbox.north) {
+          {\fontsize{36}{45}\selectfont\bfseries\textcolor{ThemePrimary}{\TheDocTitle} \par}
+          \vspace{1.5cm}
+          {\Large\bfseries \textcolor{gray}{\TheDocSubtitle} \par}
+        };
+        
+        % خط جداکننده محو
+        \draw[ThemePrimary!20, line width=1pt] ([yshift=8cm, xshift=-6cm]contentbox.south) -- ([yshift=8cm, xshift=6cm]contentbox.south);
+        
+        % مشخصات نویسنده و تاریخ
+        \node[anchor=south, yshift=2.5cm] at (contentbox.south) {
+          {\Large \bfseries \textcolor{ThemePrimary}{\TheDocAuthor} \par}
+          \vspace{1cm}
+          {\large \textcolor{gray}{\TheDocDate} \par}
+          \vspace{0.8cm}
+          {\small \textcolor{gray!80}{\TheDocVersion} \par}
+        };
+        
+      \end{tikzpicture}
+    \end{titlepage}
+  }
+}
+\makeatother
+
     \begin{tikzpicture}[remember picture, overlay]
       % پس‌زمینه رنگی اصلی
       \fill[ThemePrimary] (current page.south west) rectangle (current page.north east);

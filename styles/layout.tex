@@ -48,22 +48,21 @@
 % ------------------------------------------------------------------------------
 % 3. استایل‌دهی به تیترها (Titlesec)
 % ------------------------------------------------------------------------------
-% سفارشی‌سازی زیربخش‌ها (Subsections) با خط رنگی
-\titleformat{\section}
-  {\Huge\bfseries\color{ThemePrimary}}
+% سفارشی‌سازی بخش‌ها با خط رنگی
+\titleformat{\section}[block]
+  {\needspace{4\baselineskip}\Huge\bfseries\color{ThemePrimary}}
   {\thesection}
   {1em}
-  {#1}
-  [{\vspace{2pt}\color{ThemeSecondary!50}\titlerule[1.5pt]}]
+  {#1\\[0.5ex]{\color{ThemeSecondary!50}\titlerule[1.5pt]}}
 
 \titleformat{\subsection}
-  {\Large\bfseries\color{ThemePrimary}}
+  {\needspace{3\baselineskip}\Large\bfseries\color{ThemePrimary}}
   {\thesubsection}
   {1em}
   {#1}
 
 \titleformat{\subsubsection}
-  {\large\bfseries\color{ThemeSecondary}}
+  {\needspace{2\baselineskip}\large\bfseries\color{ThemeSecondary}}
   {\thesubsubsection}
   {1em}
   {#1}
@@ -75,7 +74,7 @@
 \usepackage{tocloft}
 
 % وسط‌چین کردن و تغییر استایل عنوان فهرست
-\renewcommand{\cfttoctitlefont}{\hfill\Huge\bfseries}
+\renewcommand{\cfttoctitlefont}{\hfill\Huge\bfseries\color{ThemePrimary}}
 \renewcommand{\cftaftertoctitle}{\hfill}
 
 % استایل خطوط راهنما (نقطه‌چین) ملایم‌تر
@@ -87,9 +86,20 @@
 \setlength{\cftbeforechapskip}{1.5em}
 \setlength{\cftbeforesecskip}{0.3em}
 
-% فونت فصل‌ها در فهرست
-\renewcommand{\cftchapfont}{\bfseries\large}
-\renewcommand{\cftchappagefont}{\bfseries\large}
+% تنظیم رنگ‌ها و فونت‌های فهرست مطالب هماهنگ با تیترها
+\renewcommand{\cftchapfont}{\bfseries\large\color{ThemePrimary}}
+\renewcommand{\cftchappagefont}{\bfseries\large\color{ThemePrimary}}
+
+\renewcommand{\cftsecfont}{\color{ThemePrimary!90!black}}
+\renewcommand{\cftsecpagefont}{\color{ThemePrimary!90!black}}
+
+\renewcommand{\cftsubsecfont}{\color{ThemeSecondary}}
+\renewcommand{\cftsubsecpagefont}{\color{ThemeSecondary}}
+
+% تو رفتگی شماره صفحات در فهرست از سمت چپ (RTL)
+\renewcommand{\cftchapafterpnum}{\hspace*{1.5em}}
+\renewcommand{\cftsecafterpnum}{\hspace*{1.5em}}
+\renewcommand{\cftsubsecafterpnum}{\hspace*{1.5em}}
 
 % ------------------------------------------------------------------------------
 % 4. تنظیمات فاصله خطوط و پاراگراف‌ها
