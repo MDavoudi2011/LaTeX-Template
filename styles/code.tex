@@ -1,0 +1,93 @@
+% ==============================================================================
+% styles/code.tex
+% ==============================================================================
+\usepackage{minted}
+\usepackage{etoolbox} % اضافه شده برای مدیریت هوشمند و امن محیط‌ها
+
+\definecolor{codeBG}{HTML}{1E1E1E}
+\definecolor{macRed}{HTML}{FF5F56}
+\definecolor{macYellow}{HTML}{FFBD2E}
+\definecolor{macGreen}{HTML}{27C93F}
+
+\tcbuselibrary{minted, skins, breakable}
+
+% تنظیم استایل شماره خطوط (انگلیسی و خاکستری)
+\makeatletter
+\renewcommand{\theFancyVerbLine}{%
+  \sffamily\textcolor{gray}{\scriptsize\lr{\arabic{FancyVerbLine}}}%
+}
+\makeatother
+
+% تنظیمات مشترک ظاهر مک
+\tcbset{
+    macbox/.style={
+        enhanced, breakable,
+        colback=codeBG,
+        colframe=codeBG,
+        colupper=white, % سفید کردن کاراکترهای عادی روی پس‌زمینه تیره
+        arc=8pt,
+        boxrule=0pt,
+        top=20pt, bottom=5pt, left=25pt, right=5pt,
+        % کلیدهای before و after حذف شدند تا تداخل ایجاد نکنند
+        overlay={
+            \fill[macRed] ([xshift=15pt,yshift=-12pt]frame.north west) circle (4pt);
+            \fill[macYellow] ([xshift=27pt,yshift=-12pt]frame.north west) circle (4pt);
+            \fill[macGreen] ([xshift=39pt,yshift=-12pt]frame.north west) circle (4pt);
+            % نمایش نام فایل در سمت راست
+            \ifstrempty{#1}{}{
+                \node[text=white, anchor=east, font=\ttfamily\footnotesize] at ([xshift=-15pt,yshift=-12pt]frame.north east) {#1};
+            }
+        }
+    }
+}
+
+% ------------------------------------------------------------------------------
+% محیط برای کدهای درون‌خطی
+% استفاده: \begin{code}[python]{نام فایل نمایشی} ... \end{code}
+% ------------------------------------------------------------------------------
+\newtcblisting{code}[2][python]{
+    macbox={#2},
+    listing only,
+    minted language=#1,
+    minted style=monokai, % استفاده از تم تیره
+    minted options={
+        fontsize=\footnotesize, 
+        linenos, 
+        numbersep=10pt, 
+        breaklines=true,
+        tabsize=4,
+        baselinestretch=1.2
+    }
+}
+
+% پیچیدن خودکار و امن محیط code در محیط latin با کمک etoolbox
+\BeforeBeginEnvironment{code}{\begin{latin}}
+\AfterEndEnvironment{code}{\end{latin}}
+
+% ------------------------------------------------------------------------------
+% دستور برای خواندن مستقیم از فایل (از پوشه codes)
+% استفاده: \inputcode[python]{ch01.py}
+% ------------------------------------------------------------------------------
+% ابتدا دستور tcb را با یک نام داخلی تعریف می‌کنیم
+\newtcbinputlisting{\myinputcode}[2][python]{
+    macbox={#2},
+    listing only,
+    listing file={codes/#2},
+    minted language=#1,
+    minted style=monokai, % استفاده از تم تیره
+    minted options={
+        fontsize=\footnotesize, 
+        linenos, 
+        numbersep=10pt, 
+        breaklines=true,
+        tabsize=4,
+        baselinestretch=1.2
+    }
+}
+
+% سپس یک دستور پوششی (Wrapper) می‌سازیم که مشکل LTR را حل کند
+\newcommand{\inputcode}[2][python]{%
+    \begin{latin}%
+    \myinputcode[#1]{#2}%
+    \end{latin}%
+}
