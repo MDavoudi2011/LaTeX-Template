@@ -1,57 +1,85 @@
 % ==============================================================================
 % styles/tables.tex
 % ==============================================================================
-% این فایل شامل ۳ استایل زیبا و متفاوت برای جداول با پشتیبانی کامل از راست‌چین (RTL) است.
+% این فایل شامل ۲ استایل زیبا و متفاوت برای جداول با پشتیبانی کامل از راست‌چین (RTL) است.
+
+% تنظیمات حرفه‌ای کپشن جداول
+\captionsetup[table]{
+    labelfont={bf,color=ThemeSecondary},
+    textfont=small,
+    skip=8pt,
+    justification=centering
+}
 
 % ---------------------------------------------------------
-% راهنمای استفاده:
-% 1. عرض و چینش ستون‌ها (پارامتر سوم):
-%    c (وسط‌چین)، r (راست‌چین)، l (چپ‌چین)، p{3cm} (عرض ثابت)
-%    برای اینکه جدول هم‌عرض صفحه شود، می‌توانید به جای tabular از tabularx استفاده کنید
-%    و از ستون نوع X استفاده کنید. اما در اینجا برای سادگی و هماهنگی از tabular استفاده شده است.
+% راهنمای استفاده از ستون‌ها و عرض جداول:
+% 
+% در این قالب از پکیج tabularray برای ساخت جداول بسیار حرفه‌ای استفاده شده است.
+% 
+% 1. ستون‌های معمولی: 
+%    c (وسط‌چین)، r (راست‌چین)، l (چپ‌چین)
 %
-% 2. هدر جداول (ردیف اول):
-%    در جداول رنگی (مدرن و فانتزی) کلمات هدر را داخل \THead{} قرار دهید تا سفید و توپر شوند.
-%    مثال: \THead{نام} & \THead{سن}
+% 2. ستون با عرض ثابت (محتوای طولانی می‌شکند):
+%    p{3cm}
 %
-% 3. خطوط جدول (مینیمال):
-%    در جدول مینیمال فقط برای جدا کردن هدر از محتوا، در انتهای سطر اول از \midrule استفاده کنید.
-%
-% 4. خطوط جدول (مدرن):
-%    در این جدول نیازی به هیچ خطی (\hline یا \midrule) نیست! فقط سطرها را بنویسید.
-%
-% 5. خطوط جدول (فانتزی):
-%    برای خط‌کشی کامل، در تعریف ستون‌ها از | استفاده کنید (مثل {|c|c|c|})
-%    و بین تمام سطرها \hline بگذارید. رنگ خطوط به طور خودکار همرنگ کادر می‌شود.
+% 3. جدول هم‌عرض صفحه (Page Width):
+%    با قرار دادن ستون از نوع X، جدول کشیده شده و عرض صفحه را پر می‌کند.
 % ---------------------------------------------------------
 
-% دستور کمکی برای هدر جداول رنگی (رنگ متن سفید و توپر)
+% دستور کمکی برای هدر جداول رنگی (برای سازگاری با نسخه‌های قبلی، در tabularray رنگ هدر خودکار است)
 \newcommand{\THead}[1]{\textcolor{white}{\textbf{#1}}}
 
+% =========================================================
 % 1. جدول مینیمال (Minimal Table)
+% =========================================================
 \NewDocumentEnvironment{minimaltable}{ O{H} m m +b }{%
     \begin{table}[#1]
         \centering
         \caption{#2}
-        \renewcommand{\arraystretch}{1.3} % فاصله مناسب سطرها
-        \begin{tabular}{#3}
-            \toprule
-            #4
-            \bottomrule
-        \end{tabular}
+        \vspace{0.3em}
+        
+        \def\mybody{#4}%
+        \begin{tblr}[expand=\mybody]{
+            colspec = {#3},
+            row{1} = {font=\bfseries},
+            hline{1,Z} = {1pt, solid},
+            hline{2} = {0.5pt, solid},
+            stretch = 1.35
+        }%
+        \mybody
+        \end{tblr}
     \end{table}
 }{}
 
+% =========================================================
 % 2. جدول مدرن (Modern Table)
+% =========================================================
 \NewDocumentEnvironment{moderntable}{ O{H} m m +b }{%
     \begin{table}[#1]
         \centering
         \caption{#2}
-        \renewcommand{\arraystretch}{1.3}
-        \rowcolors{2}{ThemeSecondary!10}{white}
-        \begin{tabular}{#3}
-            \rowcolor{ThemeSecondary}
-            #4
-        \end{tabular}
+        \vspace{0.4em}
+        
+        \begin{tcolorbox}[
+            enhanced,
+            arc=1.5mm,          % گوشه‌های گرد و حرفه‌ای
+            boxrule=1.5pt,      % ضخامت کادر جدول
+            colframe=ThemeSecondary,
+            colback=white,
+            boxsep=0pt,
+            left=0pt, right=0pt, top=0pt, bottom=0pt,
+            clip upper,
+            hbox
+        ]%
+        \def\mybody{#4}%
+        \begin{tblr}[expand=\mybody]{
+            colspec = {#3},
+            row{1} = {bg=ThemeSecondary, fg=white, font=\bfseries},
+            row{even} = {bg=ThemeSecondary!8},
+            stretch = 1.35
+        }%
+        \mybody
+        \end{tblr}%
+        \end{tcolorbox}
     \end{table}
 }{}
