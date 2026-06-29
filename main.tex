@@ -34,9 +34,6 @@
 سلام! به قالب مدرن جزوه‌نویسی خوش آمدید. 
 در این قالب سیستم ارجاع‌دهی هوشمند (\E{cleveref}) پیاده‌سازی شده است. به جای نوشتن دستی کلماتی مثل «بخش»، «شکل» یا «قضیه»، فقط کافیست از دستور \E{\textbackslash cref} استفاده کنید.
 
-به عنوان مثال، به \cref{sec:math}، \cref{thm:fundamental}، \cref{fig:sample} و \cref{tab:min} توجه کنید! تمام این ارجاعات به صورت خودکار کلمه مناسب را در کنار شماره قرار می‌دهند و با کلیک روی تمام متن آن به بخش مربوطه منتقل می‌شوید.
-همچنین برای لینک دادن به وب‌سایت‌ها می‌توانید از دستور \E{\textbackslash href} استفاده کنید، مثل: \href{https://google.com}{سایت گوگل}.
-
 \section{تست فرمول‌ها و اعداد}
 \label{sec:math}
 در این قالب از پکیج‌های پیشرفته ریاضی استفاده شده است. به عنوان مثال:
@@ -66,49 +63,12 @@
 اگر تابعی در نقطه‌ای مشتق‌پذیر باشد، در آن نقطه پیوسته نیز هست.
 \end{lemma}
 
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.4\textwidth]{example-image}
-    \begin{tikzpicture}
-        \fill[ThemePrimary] (0,0) rectangle (4,2);
-        \node[white] at (2,1) {شکل تستی};
-    \end{tikzpicture}
-    \caption{یک شکل تستی برای نشان دادن ارجاع}
-    \label{fig:sample}
-\end{figure}
-
-\section{جداول هوشمند و زیبا}
-در این قالب ۲ نوع جدول کاربردی و بسیار زیبا با دستورات ساده طراحی شده است: \E{minimaltable} و \E{moderntable}.
-برای ارجاع دادن به جدول، کافیست دستور \E{\textbackslash label} را درون آکولادِ عنوانِ جدول قرار دهید. نیازی به تعریف پارامترهای پیچیده نیست و عرض ستون‌ها در صورت استفاده از حروفی مثل \E{c} به صورت خودکار بر اساس طولانی‌ترین کلمه تنظیم می‌شود.
-
-\begin{Row}
-
-    \begin{Col}{0.45}
-        \begin{minimaltable}[H]{جدول ساده و مینیمال \label{tab:min}}{X X X}
-            نام & سن & شهر \\
-            علی & ۲۵ & تهران \\
-            رضا & ۳۰ & مشهد \\
-        \end{minimaltable}
-    \end{Col}
-%
-    \begin{Col}{0.45}
-        \begin{moderntable}[H]{جدول مدرن با هدر رنگی و راه‌راه \label{tab:mod}}{X X X}
-            نام & سن & شهر \\
-            علی & ۲۵ & تهران \\
-            رضا & ۳۰ & مشهد \\
-        \end{moderntable}
-    \end{Col}
-
-\end{Row}
-
-
 
 
 \newpage
 
 \begin{example}
 \label{ex:sample}
-برای مثال، به جدول‌های \cref{tab:min} و \cref{tab:mod} توجه کنید.
 همچنین همانطور که در \cref{def:ai}، \cref{thm:fundamental}، \cref{lem:sample} و \cref{ex:sample} مشخص است، سیستم شماره‌گذاری کاملاً یکپارچه و هوشمند است.
 \end{example}
 \begin{question}
@@ -139,8 +99,48 @@
 \subsection{تست زیربخش‌ها}
 این یک زیربخش است که برای نمایش زیبایی خط رنگی زیر آن استفاده می‌شود. شما می‌توانید از این خطوط برای تفکیک بهتر مطالب در هر فصل استفاده کنید.
 
+\subsection{تست کدهای برنامه‌نویسی}
+در اینجا یک کد پایتون به صورت درون‌خطی قرار داده شده است:
+\begin{code}[python]{main.py}
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
 
+print(factorial(5))
+\end{code}
+
+و در اینجا کد مستقیماً از فایل خوانده می‌شود:
 \inputcode[python]{ch01.py}
 
+\subsection{تست نمودار درختی}
+شما می‌توانید ساختارها را با استفاده از محیط \E{moderntree} به سادگی رسم کنید:
+\begin{moderntree}
+[هوش مصنوعی
+  [یادگیری ماشین
+    [یادگیری نظارت‌شده]
+    [یادگیری بدون نظارت]
+  ]
+  [پردازش زبان طبیعی
+    [مدل‌های زبانی]
+    [ترجمه ماشینی]
+  ]
+]
+\end{moderntree}
+
+همچنین محیط \E{mindmaptree} برای رسم نمودارهای بیضی‌شکل و مفهومی طراحی شده است:
+\begin{mindmaptree}
+[برنامه‌نویسی
+  [فرانت‌اند
+    [React]
+    [Vue]
+  ]
+  [بک‌اند
+    [Node.js]
+    [Python]
+  ]
+]
+\end{mindmaptree}
 
 \end{document}
