@@ -54,9 +54,26 @@
 	}
 }
 
+% =========================================================
+% دستور اختصاصی برای قرار دادن آیتم‌ها در کنار هم
+% =========================================================
+\newenvironment{Row}{
+    \par\vspace{1em}\noindent\ignorespaces
+}{
+    \par\vspace{1em}
+}
+
+\newcommand{\Col}[2]{%
+    \begin{minipage}[c]{#1\textwidth}
+        \centering
+        #2
+    \end{minipage}\hfill
+}
+
+
 % لود کردن محیط‌های شماره‌دار و بدون شماره
-\input{styles/environments_numbered}
-\input{styles/environments_unnumbered}
+\input{styles/env_numbered}
+\input{styles/env_unnumbered}
 
 % لود کردن استایل‌های جدول
 \input{styles/tables}

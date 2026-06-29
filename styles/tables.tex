@@ -36,7 +36,6 @@
     \begin{table}[#1]
         \centering
         \caption{#2}
-        \vspace{0.3em}
         
         \def\mybody{#4}%
         \begin{tblr}[expand=\mybody]{
@@ -58,10 +57,10 @@
     \begin{table}[#1]
         \centering
         \caption{#2}
-        \vspace{0.4em}
         
         \begin{tcolorbox}[
             enhanced,
+            nobeforeafter,
             arc=1.5mm,          % گوشه‌های گرد و حرفه‌ای
             boxrule=1.5pt,      % ضخامت کادر جدول
             colframe=ThemeSecondary,
