@@ -83,21 +83,21 @@
 
 \begin{Row}
 
-\Col{0.45}{
-    \begin{minimaltable}[H]{جدول ساده و مینیمال \label{tab:min}}{X X X}
-        نام & سن & شهر \\
-        علی & ۲۵ & تهران \\
-        رضا & ۳۰ & مشهد \\
-    \end{minimaltable}
-
-}%
-\Col{0.45}{
-    \begin{moderntable}[H]{جدول مدرن با هدر رنگی و راه‌راه \label{tab:mod}}{X X X}
-        نام & سن & شهر \\
-        علی & ۲۵ & تهران \\
-        رضا & ۳۰ & مشهد \\
-    \end{moderntable}
-}
+    \begin{Col}{0.45}
+        \begin{minimaltable}[H]{جدول ساده و مینیمال \label{tab:min}}{X X X}
+            نام & سن & شهر \\
+            علی & ۲۵ & تهران \\
+            رضا & ۳۰ & مشهد \\
+        \end{minimaltable}
+    \end{Col}
+%
+    \begin{Col}{0.45}
+        \begin{moderntable}[H]{جدول مدرن با هدر رنگی و راه‌راه \label{tab:mod}}{X X X}
+            نام & سن & شهر \\
+            علی & ۲۵ & تهران \\
+            رضا & ۳۰ & مشهد \\
+        \end{moderntable}
+    \end{Col}
 
 \end{Row}
 
@@ -139,10 +139,8 @@
 \subsection{تست زیربخش‌ها}
 این یک زیربخش است که برای نمایش زیبایی خط رنگی زیر آن استفاده می‌شود. شما می‌توانید از این خطوط برای تفکیک بهتر مطالب در هر فصل استفاده کنید.
 
-\begin{code}[python]{main.py}
-def hello():
-    print("Hello")
-\end{code}
 
 \inputcode[python]{ch01.py}
+
+
 \end{document}

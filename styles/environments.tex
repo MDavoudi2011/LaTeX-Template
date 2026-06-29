@@ -63,13 +63,12 @@
     \par\vspace{1em}
 }
 
-\newcommand{\Col}[2]{%
+\newenvironment{Col}[1]{%
     \begin{minipage}[c]{#1\textwidth}
         \centering
-        #2
+}{%
     \end{minipage}\hfill
 }
-
 
 % لود کردن محیط‌های شماره‌دار و بدون شماره
 \input{styles/env_numbered}
