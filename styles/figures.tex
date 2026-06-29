@@ -1,76 +1,42 @@
-\usepackage{environ}
-\usepackage{forest}
-\usetikzlibrary{shadows}
+% ==============================================================================
+% styles/figures.tex
+% ==============================================================================
 
 % تعریف استایل سایه‌ها برای جلوگیری از خطای پردازش در forest
 \tikzset{
-  modern tree shadow/.style={
+  tree shadow/.style={
     drop shadow={opacity=0.15, shadow xshift=1.5pt, shadow yshift=-1.5pt}
-  },
-  mindmap tree shadow/.style={
-    drop shadow={opacity=0.1, shadow xshift=1pt, shadow yshift=-1pt}
   }
 }
 
 \forestset{
-  modern tree/.style={
+  default tree/.style={
     for tree={
       draw=ThemePrimary,
       thick,
-      top color=white,
+      top color=ThemeSecondary!20,
       bottom color=ThemeSecondary!10,
-      text=ThemePrimary!20!black,
+      text=black,
       rounded corners=6pt,
-      edge={draw=ThemePrimary!80, thick, -latex},
-      modern tree shadow,
+      edge={draw=ThemePrimary, thick, -latex},
+      tree shadow,
       inner sep=8pt,
       font=\small\bfseries,
       align=center,
-      execute at begin node={\setRTL}, % <--- جادوی حل مشکل دوبار نویسی
+      execute at begin node={\setRTL},
       s sep=1cm,
       l sep=1.2cm,
       parent anchor=south,
       child anchor=north
     }
-    % بخش دردسرساز before typesetting nodes کاملا حذف شد!
   }
 }
 
 % ترفند باز کردن محتوای \BODY قبل از اجرای forest
-\def\RenderModernTree#1{\begin{forest} modern tree #1 \end{forest}}
+\def\RenderTree#1{\begin{forest} default tree #1 \end{forest}}
 
-\NewEnviron{moderntree}{%
+\NewEnviron{tree}{%
   \begin{center}
-  \expandafter\RenderModernTree\expandafter{\BODY}
-  \end{center}
-}
-
-\forestset{
-  mindmap tree/.style={
-    for tree={
-      draw=ThemePrimary!80,
-      thick,
-      fill=ThemePrimary!10,
-      text=black,
-      ellipse,
-      edge={draw=ThemePrimary!80, thick, -},
-      mindmap tree shadow,
-      inner sep=4pt,
-      font=\small\bfseries,
-      align=center,
-      execute at begin node={\setRTL}, % <--- جادوی حل مشکل دوبار نویسی
-      s sep=0.8cm,
-      l sep=1.2cm,
-    }
-    % بخش دردسرساز before typesetting nodes کاملا حذف شد!
-  }
-}
-
-% ترفند باز کردن محتوای \BODY قبل از اجرای forest
-\def\RenderMindmapTree#1{\begin{forest} mindmap tree #1 \end{forest}}
-
-\NewEnviron{mindmaptree}{%
-  \begin{center}
-  \expandafter\RenderMindmapTree\expandafter{\BODY}
+  \expandafter\RenderTree\expandafter{\BODY}
   \end{center}
 }
